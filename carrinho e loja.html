@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/92d70a2fd8.js" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/png" href="logo-tenis.png">
+        <title>VOLTEX | LOJA</title>
+    </head>
+    <body>
+        <header id="header">
+            <a href="inicio.html" class="logo"><img src="logo-tenis.png" alt="Logo-tenis-neon" class="logoimg">Voltex</a>
+            <ul class="navegação">
+                <li><a href="inicio.html#tela01">Início</a></li>
+                <li><a href="inicio.html#tela02">Sobre nós</a></li>
+                <li><a href="inicio.html#tela03">Avaliações</a></li>
+                <li><a href="inicio.html#tela04">Contato</a></li>
+            </ul><!--navegação-->
+        
+            <div class="header-icons">
+                <i class='bx bx-cart'></i>
+            </div><!--header-icons-->
+        </header>
+
+
+        <div class="container">
+            <div id="root"></div>
+            <div class="sidebar">
+                <div class="head"><p>Meu carrinho</p></div>
+                <div class="cart"><i class="fa-solid fa-cart-shopping"></i><p id="count">0</p></div>
+                <div id="cartItem">Seu carrinho está vazio.</div>
+                <div class="foot">
+                    <h3>Total</h3>
+                    <h2 id="total">R$ 0</h2>
+                </div>
+            </div>
+        </div>
+        <script src="addtocart.js"></script>
+    </body>
+</html>
+
+<!-- <div class="cart"><i class="fa-solid fa-cart-shopping"></i><p id="count">0</p></div> -->
+
+<style>
+/*------------------------------------------------------ GERAIS -----------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap');
+
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    font-size: 18px;
+    }
+
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    a {
+    color: inherit;
+    text-decoration: none; 
+    }
+
+/*------------------------------------------------------ CABEÇALHO -----------------------------------------------------*/
+*{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        text-decoration: none;
+        list-style: none;
+    }
+
+    :root{
+        --bg-color:var(--bg-color) #1d2631;
+        --tex-color: #fff;
+        --main-color: #34e7f8;
+        --other-color: #fcfcfc;
+        --h1-font: 4rem;
+        --p-font: 1rem;
+    }
+
+    body{
+        background-color:#1d2631 ;
+        color: var(--tex-color);
+        background: linear-gradient(to top left, #000000, #263340);
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    html, body {
+    height: 100%;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+/*------------------------------------------------------ CABEÇALHO -----------------------------------------------------*/
+    header{
+        position: fixed;
+        width: 100%;
+        top: 0;
+        right: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 30px 8%;
+
+    }
+
+    .logoimg{
+        height: 120%;
+        width: 120%;
+    }
+
+    .logo{
+        display: flex;
+        align-items: center;
+        color: var(--tex-color);
+        width: 10%;
+        height: 10%;
+        font-weight: bold;
+        font-size: 160%;
+        font-family: "Bungee Hairline", sans-serif;
+    }
+
+/*----- botões menu | texto -----*/
+    .navegação{
+        display: flex;
+    }
+
+    .navegação a{
+        color: var(--other-color);
+        font-size: var(--p-font);
+        font-weight: 500;
+        margin: 0 30px;
+        transition: a .55s ease;
+    }
+
+    .navegação a:hover{
+        color: var(--main-color);
+        transition: 0.5s;
+    }
+
+/*----- ícones -----*/
+    .header-icons{
+        display: flex;
+        align-items: center;
+        color: inherit; /* Herdar a cor do elemento pai */
+        text-decoration: none; /* Remover o sublinhado padrão */
+    }
+
+/*----- botão menu -----*/
+    #menu{
+        font-size: 35px;
+        color: var(--tex-color);
+        z-index: 10001;
+        cursor: pointer;
+    }
+
+    .header-icons i{
+        margin-right: 25px;
+        font-size: 28px;
+        cursor: pointer;
+        transition: all .5s ease;
+        color: inherit; /* Herdar a cor do elemento pai */
+    text-decoration: none; /* Remover o sublinhado padrão */
+    }
+
+    .header-icons i:hover{
+        transform: translateY(-5px);
+        color: var(--main-color);
+    }
+
+/*------------------------------------------------------ LISTA -----------------------------------------------------*/
+    .cart{
+        display: flex;
+        background-color: white;
+        justify-content: space-between;
+        align-items: center;
+        padding: 7px 10px;
+        border-radius: 3px;
+        margin: 1%;
+        margin-bottom: 2%;
+    }
+
+    .fa-solid{
+        color:#4d5863;
+    }
+
+    .cart p{
+        height: 32px;
+        width: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 22px;
+        background-color: #4d5863;
+        color: white;
+    }
+
+    .container{
+        display: flex;
+        width: 70%;
+        margin-bottom: 30px;
+    }
+
+    #root{
+        width: 60%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+
+    .sidebar{
+        width: 40%;
+        border-radius: 5px;
+        background-color: #00000024;
+        margin-left: 20px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .head{
+        text-align: center;
+        background-color: #4d5863;
+        border-radius: 3px;
+        height: 40px;
+        padding: 10px;
+        margin-bottom: 20px;
+        color: white;
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+    }
+
+    .foot{
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0px;
+        padding: 10px 0px;
+        border-top: 1px solid #333;
+    }
+
+    .box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        border: 2px solid #4d5863;
+        border-radius: 5px;
+        padding: 15px;
+    }
+
+    .img-box{
+        width: 100%;
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .images{
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .bottom{
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 110px;
+    }
+
+    h3{
+        font-weight: 400;
+    }
+
+    h2{
+        font-size: 20px;
+        color: #adadad;
+        font-weight: 400;
+        margin-top: 2%;
+    }
+
+    button{
+        margin-top: 2%;
+        width: 100%;
+        position: relative;
+        border: none;
+        border-radius: 5px;
+        background-color: #4d5863;
+        padding: 7px 25px;
+        cursor: pointer;
+        color: white;
+    }
+
+    button:hover{
+        color: #000000;
+        background-color: #ffffff;
+        transition: 0.5S;
+    }
+
+    .cart-item{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.441);
+        border-radius: 3px;
+        margin: 10px 10px;
+    }
+
+    .row-img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .rowimg{
+        max-width: 60px;
+        max-height: 60px;
+    }
+
+    .fa-trash:hover{
+        cursor: pointer;
+        color: #333;
+    }
+</style>
+
+
+
+
+<script>
+    const product = [
+    {
+        id: 0,
+        image: 'tenis1.png',
+        title: 'Tênis Voltex - Casual Fem - Preto',
+        price: 290.99,
+    },
+
+    {
+        id: 1,
+        image: 'tenis2.png',
+        title: 'Tênis Voltex - Casual Fem - Bege',
+        price: 270.50,
+    },
+    {
+        id: 2,
+        image: 'tenis3.png',
+        title: 'Tênis Voltex - Casual Fem - Azul',
+        price: 220.0,
+    },
+
+    {
+        id: 3,
+        image: 'tenis4.png',
+        title: 'Tênis Voltex - Casual Fem - Rosa',
+        price: 250.99,
+    }
+];
+
+const categories = [...new Set(product.map((item)=>
+    {return item}))]
+    let i=0;
+document.getElementById('root').innerHTML = categories.map((item)=>
+{
+    var {image, title, price} = item;
+    return(
+        `<div class='box'>
+            <div class='img-box'>
+                <img class='images' src=${image}></img>
+            </div>
+        <div class='bottom'>
+        <p>${title}</p>
+        <h2>R$ ${price}</h2>`+
+        "<button onclick='addtocart("+(i++)+")'>Adicionar ao carrinho</button>"+
+        `</div>
+        </div>`
+    )
+}).join('')
+
+var cart =[];
+
+function addtocart(a){
+    cart.push({...categories[a]});
+    displaycart();
+}
+function delElement(a){
+    cart.splice(a, 1);
+    displaycart();
+}
+
+function displaycart(){
+    let j = 0, total=0;
+    document.getElementById("count").innerHTML=cart.length;
+    if(cart.length==0){
+        document.getElementById('cartItem').innerHTML = "Seu carrinho está vazio.";
+        document.getElementById("total").innerHTML = "R$ "+0+"";
+    }
+    else{
+        document.getElementById("cartItem").innerHTML = cart.map((items)=>
+        {
+            var {image, title, price} = items;
+            total=total+price;
+            document.getElementById("total").innerHTML = "R$ "+total+"";
+            return(
+                `<div class='cart-item'>
+                <div class='row-img'>
+                    <img class='rowimg' src=${image}>
+                </div>
+                <p style='font-size:15px;'>${title}</p>
+                <h2 style='font-size: 15px;'>R$ ${price}</h2>`+
+                "<i class='fa-solid fa-trash' onclick='delElement("+ (j++) +")'></i></div>"
+            );
+        }).join('');
+    }
+
+    
+}
+
+</script>
